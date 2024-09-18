@@ -1,0 +1,250 @@
+        @media only screen and (min-width: 1000px) and (max-width: 5000px) {
+            body.kc-css-system .kc-css-627295 {
+                width: 40%;
+            }
+
+            body.kc-css-system .kc-css-731239 {
+                width: 15%;
+            }
+
+            body.kc-css-system .kc-css-736060 {
+                width: 25%;
+            }
+
+            body.kc-css-system .kc-css-259895 {
+                width: 20%;
+            }
+
+            body.kc-css-system .kc-css-47556 {
+                width: 50%;
+            }
+
+            body.kc-css-system .kc-css-514767 {
+                width: 50%;
+            }
+        }
+
+        body.kc-css-system .kc-css-905584 {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border-top: 3px solid #1ab6c1;
+            ;
+        }
+
+        body.kc-css-system .kc-css-905584>.kc-container {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        body.kc-css-system .kc-css-518334 .type {
+            color: #0f5291;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body.kc-css-system .kc-css-329000 i {
+            width: 26px;
+        }
+
+        body.kc-css-system .kc-css-329000 .title {
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-329000 .item {
+            display: flex;
+            margin-top: 10px;
+            flex-flow: wrap;
+        }
+
+        body.kc-css-system .kc-css-710491 .type {
+            color: #0f5291;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body.kc-css-system .kc-css-250115 i {
+            width: 26px;
+        }
+
+        body.kc-css-system .kc-css-250115 .title {
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-250115 .item {
+            display: flex;
+            margin-top: 10px;
+            flex-flow: wrap;
+        }
+
+        body.kc-css-system .kc-css-955163 .type {
+            color: #0f5291;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body.kc-css-system .kc-css-268835 i {
+            width: 26px;
+        }
+
+        body.kc-css-system .kc-css-268835 .title {
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-268835 .item {
+            display: flex;
+            margin-top: 10px;
+            flex-flow: wrap;
+        }
+
+        body.kc-css-system .kc-css-205711 .type {
+            color: #0f5291;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        body.kc-css-system .kc-css-767101 .icon {
+            width: 40px;
+            color: #0f5291;
+            font-size: 30px;
+        }
+
+        body.kc-css-system .kc-css-767101 .type {
+            color: #1ab6c1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        body.kc-css-system .kc-css-767101 .sub {
+            color: #1ab6c1;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        body.kc-css-system .kc-css-767101 .col {
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-767101 {
+            display: flex;
+            margin-top: 10px;
+            flex-flow: wrap;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-883775 i {
+            height: 26px;
+            color: #0f5090;
+            font-size: 26px;
+            line-height: 26px;
+        }
+
+        body.kc-css-system .kc-css-883775 .thumb img {
+            height: 30px;
+        }
+
+        body.kc-css-system .kc-css-883775 .item {
+            margin-right: 15px;
+        }
+
+        body.kc-css-system .kc-css-883775 {
+            display: flex;
+            margin-top: 15px;
+            flex-flow: wrap;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-238936 {
+            background: #f6f6f6;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        body.kc-css-system .kc-css-238936>.kc-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-948734 {
+            width: auto;
+        }
+
+        body.kc-css-system .kc-css-490628 .thumb img,
+        body.kc-css-system .kc-css-490628 .thumb svg {
+            width: 168px;
+        }
+
+        body.kc-css-system .kc-css-490628 {
+            position: fixed;
+            width: auto;
+            left: 15px;
+            bottom: 15px;
+            z-index: 98;
+        }
+
+        body.kc-css-system .kc-css-603447 .icon {
+            display: flex;
+            width: 40px;
+            height: 40px;
+            background: #0f5291;
+            border-radius: 100% 100% 100% 100%;
+            color: #ffffff;
+            font-size: 24px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-603447 .thumb img,
+        body.kc-css-system .kc-css-603447 .thumb svg {
+            width: 168px;
+        }
+
+        body.kc-css-system .kc-css-603447 .type {
+            background: #0f5291;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 32px;
+            text-transform: uppercase;
+            padding-right: 15px;
+            padding-left: 20px;
+            margin-left: -15px;
+        }
+
+        body.kc-css-system .kc-css-603447 {
+            position: fixed;
+            display: none;
+            align-items: center;
+            width: auto;
+            left: 15px;
+            bottom: 90px;
+            z-index: 98;
+        }
+
+        body.kc-css-system .kc-css-715779 .thumb img {
+            max-height: 40px;
+        }
+
+        body.kc-css-system .kc-css-715779 {
+            width: auto;
+        }
+
+        @media only screen and (max-width: 767px) {
+            body.kc-css-system .kc-css-731239 {
+                margin-top: 20px;
+            }
+
+            body.kc-css-system .kc-css-736060 {
+                margin-top: 20px;
+            }
+
+            body.kc-css-system .kc-css-259895 {
+                margin-top: 20px;
+            }
+
+            body.kc-css-system .kc-css-948734 {
+                font-size: 13px;
+                margin-right: 20px;
+            }
+        }
