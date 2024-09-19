@@ -11,5 +11,6 @@
     @yield('content')
     @include('layout.default.footer')
     @include('layout.default.footer_js')
+    @stack('js')
 </body>
 </html>

@@ -7,10 +7,9 @@
 <body class="home page-template-default page page-id-2 wp-custom-logo kc-elm theme-vnthemes kingcomposer kc-css-system woocommerce-no-js woocommerce">
     @include('layout.default.header')
     @include('layout.default.nav')
-    @include('layout.default.breakcrum')
+    @include('layout.default.banner')
     @yield('content')
     @include('layout.default.footer')
     @include('layout.default.footer_js')
-    @stack('js')
 </body>
 </html>

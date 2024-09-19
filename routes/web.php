@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
 Route::group(['prefix' => ''], function () {
-
+    Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
 });
 

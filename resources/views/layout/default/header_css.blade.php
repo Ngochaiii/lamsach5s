@@ -10,13 +10,7 @@
     :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
     </style>
 
-<link rel='stylesheet' id='woocommerce-layout-css'
-        href='{{asset('web/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css')}}' type='text/css' media='all' />
-    <link rel='stylesheet' id='woocommerce-smallscreen-css'
-        href='{{asset('web/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css')}}' type='text/css'
-        media='only screen and (max-width: 768px)' />
-    <link rel='stylesheet' id='woocommerce-general-css' href='{{asset('web/wp-content/plugins/woocommerce/assets/css/woocommerce.css')}}'
-        type='text/css' media='all' />
+
 
     <link rel='stylesheet' id='contact-form-7-css' href='{{asset('web/wp-content/plugins/contact-form-7/includes/css/styles.css')}}' type='text/css' media='all' />
     <link rel='stylesheet' id='toc-screen-css' href='{{asset('web/wp-content/plugins/table-of-contents-plus/screen.min.css')}}' type='text/css' media='all' />
@@ -31,10 +25,6 @@
     <link rel="alternate" title="oNhúng (JSON)" type="application/json+oembed" href="wp-json/oembed/1.0/embed511e.json?url=https%3A%2F%2Flamsach5s.vn%2F" />
     <link rel="alternate" title="oNhúng (XML)" type="text/xml+oembed" href="wp-json/oembed/1.0/embeddbb8?url=https%3A%2F%2Flamsach5s.vn%2F&amp;format=xml" />
 
-    <style id='wp-fonts-local' type='text/css'>
-        @font-face{font-family:Inter;font-style:normal;font-weight:300 900;font-display:fallback;src:url('wp-content/plugins/woocommerce/assets/fonts/Inter-VariableFont_slnt%2cwght.woff2') format('woff2');font-stretch:normal;}
-        @font-face{font-family:Cardo;font-style:normal;font-weight:400;font-display:fallback;src:url('wp-content/plugins/woocommerce/assets/fonts/cardo_normal_400.woff2') format('woff2');}
-    </style>
 <link rel="icon" href="{{asset('web/wp-content/uploads/cropped-Favicon-32x32.png')}}" sizes="32x32" />
 <link rel="icon" href="{{asset('web/wp-content/uploads/cropped-Favicon-192x192.png')}}" sizes="192x192" />
 <link rel="apple-touch-icon" href="{{asset('web/wp-content/uploads/cropped-Favicon-180x180.png')}}" />
