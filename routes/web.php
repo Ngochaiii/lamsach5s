@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\AuthenticationController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\TypeController;
 use App\Http\Controllers\FrontEnd\ContactController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +20,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
+Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
 
-Route::group(['prefix' => ''], function () {
-    Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
+// Authentication routes
+Route::get('/login', [AuthenticationController::class, 'index'])->name('login');
+Route::post('/login', [AuthenticationController::class, 'login']);
+Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+    //post
+    Route::get('/post', [PostController::class, 'index'])->name('admin.post');
+    Route::post('/add', [PostController::class, 'store'])->name('admin.post.add');
+
+
+    // type
+    Route::get('/type', [TypeController::class, 'index'])->name('admin.type');
+    Route::post('/type-add', [TypeController::class, 'store'])->name('admin.type.add');
 });
-
