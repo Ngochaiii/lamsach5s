@@ -2,11 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Types extends Model
 {
-    use HasFactory;
-    protected $fillable = ['name', 'type'];
+    protected $fillable = [
+        'name',
+        'type',
+        'position_id'
+    ];
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
 }

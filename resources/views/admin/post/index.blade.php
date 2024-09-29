@@ -1,49 +1,63 @@
-@extends('layout.index')
+@extends('layout.admin')
 @section('content')
     <div class="container bg-white mb-5">
-        <header class="header">
-            <h1 id="title" class="text-center">Tạo Bài Viết </h1>
-            <p id="description" class="text-center">
-                Thank you for taking the time to help us improve the platform
-            </p>
+        <header class="header" style="display: flex; justify-content: center; align-items: center;">
+            <h1 id="title" class="text-center">Tạo Bài Viết</h1>
         </header>
         <div class="form-wrap">
-            <form method="POST" action="{{ route('admin.post.add') }}" enctype="multipart/form-data" >
+            <form method="POST" action="{{ route('admin.post.add') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label id="name-label" for="name">Tiêu Đề</label>
-                            <input type="text" name="name"  placeholder="Nhập tiêu đề của bài viết"
+                            <label for="name">Tiêu Đề</label>
+                            <input type="text" name="name" id="name" placeholder="Nhập tiêu đề của bài viết"
                                 class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label id="name-label" for="name">Mô tả ngắn</label>
-                            <input type="text" name="description"  placeholder="Nhập mô tả của bài viết"
+                            <label for="description">Mô tả ngắn</label>
+                            <input type="text" name="description" id="description" placeholder="Nhập mô tả của bài viết"
                                 class="form-control" required>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label>Thể loại</label>
-                            <select id="dropdown" name="type" class="form-control" required>
-                                <option disabled selected value>Select</option>
-                                @foreach($types as $type)
-                                    <option value="{{ $type->type }}">{{ $type->name }}</option>
+                            <label>Loại bài viết</label>
+                            <select id="post_type" name="post_type" class="form-control" required>
+                                <option value="" disabled selected>Chọn loại bài viết</option>
+                                <option value="service">Dịch vụ</option>
+                                <option value="blog">Blog làm sạch</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="category_section" style="display: none;">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Danh mục</label>
+                            <select id="category" name="category" class="form-control">
+                                <option value="" disabled selected>Chọn danh mục</option>
+                                @foreach ($types as $type)
+                                    @if ($type->position_id == 2)
+                                        <!-- Assuming 2 is for "Blog làm sạch" -->
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
+
+                <!-- Các phần còn lại của form giữ nguyên -->
+
                 <div class="row justify-content-center">
                     <label class="picture" for="picture__input" tabIndex="0">
                         <span class="picture__image"></span>
                     </label>
-
                     <input type="file" name="picture_inputs" id="picture__input">
                 </div>
 
@@ -51,18 +65,20 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea id="editor" class="form-control" name="content" placeholder="Enter your content here..." style="min-height: 100vh; resize: vertical;"></textarea>
+                            <textarea id="editor" class="form-control" name="content" placeholder="Nhập nội dung bài viết ở đây..."
+                                style="min-height: 100vh; resize: vertical;"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-4">
-                        <button type="submit" id="submit" class="btn btn-primary btn-block">Submit Survey</button>
+                        <button type="submit" id="submit" class="btn btn-primary btn-block">Đăng bài</button>
                     </div>
                 </div>
-
             </form>
+
+
         </div>
     </div>
 
@@ -74,8 +90,8 @@
                 console.error(error);
             });
     </script>
-@endsection
-@push('css')
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
@@ -269,8 +285,6 @@
             max-width: 100%;
         }
     </style>
-@endpush
-@push('js')
     <script>
         const inputFile = document.querySelector("#picture__input");
         const pictureImage = document.querySelector(".picture__image");
@@ -308,4 +322,21 @@
                 console.error(error);
             });
     </script>
-@endpush
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const postTypeSelect = document.getElementById('post_type');
+            const categorySection = document.getElementById('category_section');
+            const categorySelect = document.getElementById('category');
+
+            postTypeSelect.addEventListener('change', function() {
+                if (this.value === 'blog') {
+                    categorySection.style.display = 'block';
+                    categorySelect.required = true;
+                } else {
+                    categorySection.style.display = 'none';
+                    categorySelect.required = false;
+                }
+            });
+        });
+    </script>
+@endsection

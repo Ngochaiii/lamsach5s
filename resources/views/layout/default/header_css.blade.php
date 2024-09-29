@@ -10,10 +10,6 @@
     :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
     </style>
  {{-- mới thêm  --}}
- <!-- Bootstrap CSS -->
- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
- {{-- kết thúc  --}}
-
 
     <link rel='stylesheet' id='contact-form-7-css' href='{{asset('web/wp-content/plugins/contact-form-7/includes/css/styles.css')}}' type='text/css' media='all' />
     <link rel='stylesheet' id='toc-screen-css' href='{{asset('web/wp-content/plugins/table-of-contents-plus/screen.min.css')}}' type='text/css' media='all' />

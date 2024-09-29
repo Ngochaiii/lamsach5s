@@ -15,6 +15,7 @@ class Post extends Model
         'slug',
         'image',
         'type',
+        'type_id',
         'content',
     ];
     protected static function boot()
@@ -24,5 +25,9 @@ class Post extends Model
     static::creating(function ($post) {
         $post->slug = Str::slug($post->title);
     });
+}
+public function type()
+{
+    return $this->belongsTo(Types::class, 'type', 'type');
 }
 }

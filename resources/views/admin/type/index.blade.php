@@ -1,35 +1,33 @@
-@extends('layout.index')
+@extends('layout.admin')
 @section('content')
     <div class="container py-5 mb-5">
         <!-- For demo purpose -->
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-6">Nhập danh mục bài viết </h1>
+                <h1 class="display-6">Nhập danh mục cho blog </h1>
             </div>
         </div> <!-- End -->
         <div class="row mb-5">
             <div class="col-lg-6 mx-auto">
-                <div class="card ">
-                    <div class="card-header">
-                        <!-- Credit card form content -->
-                        <div class="tab-content">
-                            <!-- credit card info-->
-                            <div id="credit-card" class="tab-pane fade show active pt-3">
-                                <form action="{{ route('admin.type.add') }}" method="POST">
-                                    @csrf
-                                    <div class="form-group"> <label for="username">
-                                            <h6>Danh mục bài viết mới</h6>
-                                        </label> <input type="text" name="name" placeholder="Tên danh mục" required
-                                            class="form-control ">
-                                    </div>
-
-                                    <div class="card-footer"> <button type="submit"
-                                            class="subscribe btn btn-primary btn-block shadow-sm"> Tọa mới </button>
-                                </form>
+                <!-- Credit card form content -->
+                <div class="tab-content">
+                    <!-- credit card info-->
+                    <div id="credit-card" class="tab-pane fade show active pt-3">
+                        <form action="{{ route('admin.type.add') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name">
+                                    <h6>Danh mục bài viết mới (Blog làm sạch)</h6>
+                                </label>
+                                <input type="text" id="name" name="name" placeholder="Tên danh mục" required class="form-control">
                             </div>
-                        </div> <!-- End -->
+                            <input type="hidden" name="position_id" value="2">
+                            <div class="card-footer">
+                                <button type="submit" class="subscribe btn btn-primary btn-block shadow-sm">Tạo mới</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
+                </div> <!-- End -->
             </div>
         </div>
         @if (session('success'))

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');       // Cột tiêu đề bài viết
             $table->string('slug')->unique();  // Cột slug duy nhất
-            $table->string('image');       // Cột lưu đường dẫn hình ảnh
-            $table->string('description'); // Mô tả ngắn dành cho Seo
+            $table->string('image')->nullable();       // Cột lưu đường dẫn hình ảnh
+            $table->string('description')->nullable(); // Mô tả ngắn dành cho Seo
             $table->string('type');        // Cột loại bài viết (để nhận biết kiểu)
             $table->longText('content');       // Cột nội dung bài viết
             $table->timestamps();          // Cột created_at và updated_at
