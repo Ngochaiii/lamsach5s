@@ -24,6 +24,14 @@
             <a href="{{ route('admin.type') }}" class="card text-center"><i class="fa-solid fa-user"></i> Danh mục
             </a>
         </div>
-
+        <div class="cardContainer">
+            <a href="{{route('admin.custommer')}}" class="card text-center">
+                <i class="fa-solid fa-users"></i> Yêu cầu từ khách hàng
+            </a>
+            <a href="" class="card text-center"><i class="fa-solid fa-city"></i> Quản trị Bài viết
+            </a>
+            <a href="" class="card text-center"><i class="fa-solid fa-user"></i> Quản trị Danh mục
+            </a>
+        </div>
     </div>
 </aside>

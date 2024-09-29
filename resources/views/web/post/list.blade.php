@@ -1,36 +1,260 @@
 @extends('layout.default')
 @section('content')
-    <div class="kc-elm kc-css-585439 kc_col-sm-8 kc_column kc_col-sm-8">
+    <section id="main_archive" class="kc-elm kc-css-711401 kc_row vnt_section hide_col">
 
-        <div class="kc-elm kc-css-563013 vnt_title">
+        <div class="kc-row-container kc-container vnt_col">
 
-            <h1>{{ $currentCategory->name }}</h1>
+            <div class="kc-elm kc-css-675907 kc_col-sm-4 kc_column kc_col-sm-4">
 
+                <div class="kc-elm kc-css-389257 vnt_title">
 
-        </div>
-        <div class="kc-elm kc-css-674790 vnt_archive">
-            @foreach($posts as $post)
-            <div class="kc-elm item item_1 odd">
-                <a class="kc-elm thumb" href="../../nhung-luu-y-khi-di-chuyen-trong-mua-mua-bao/index.html"
-                    title="NHỮNG LƯU Ý KHI DI CHUYỂN TRONG MÙA MƯA BÃO"><img
-                        src="../../wp-content/uploads/bai-khuong-ha-truong-chinh-hn-8739-7537-1633928954-380x260xc.jpg"
-                        alt="NHỮNG LƯU Ý KHI DI CHUYỂN TRONG MÙA MƯA BÃO"></a>
-                <div class="col">
-                    <div class="kc-elm title"><a href="../../nhung-luu-y-khi-di-chuyen-trong-mua-mua-bao/index.html"
-                            title="NHỮNG LƯU Ý KHI DI CHUYỂN TRONG MÙA MƯA BÃO">NHỮNG LƯU Ý KHI DI CHUYỂN TRONG
-                            MÙA MƯA BÃO</a></div>
-                    <div class="kc-elm desc">Mùa mưa là thời điểm người tham gia giao thông phải đối diện với
-                        nhiều nguy cơ mất an toàn&hellip;</div>
-                    <div class="more"><a href="../../nhung-luu-y-khi-di-chuyen-trong-mua-mua-bao/index.html"
-                            title="NHỮNG LƯU Ý KHI DI CHUYỂN TRONG MÙA MƯA BÃO">Xem chi tiết</a></div>
+                    <h3 class="type">Bài viết xem nhiều</h3>
+                    <span class="sub"></span>
+
                 </div>
-            </div>
-            @endforeach
-        </div>
+                <div class="kc-elm kc-css-611337 vnt_archive">
+                </div>
 
-        <div class="kc-elm vnt_pagenavi"><span aria-current="page" class="page-numbers current">1</span>
-            <a class="page-numbers" href="page/2/index.html">2</a>
-            <a class="next page-numbers" href="page/2/index.html"><i class="fa-chevron-right"></i></a>
+
+            </div>
+            <div class="kc-elm kc-css-585439 kc_col-sm-8 kc_column kc_col-sm-8">
+
+                <div class="kc-elm kc-css-563013 vnt_title">
+
+                    <h1 class="type">{{ $currentCategory->name }}</h1>
+
+
+                </div>
+                <div class="kc-elm kc-css-674790 vnt_archive">
+                    @foreach ($posts as $post)
+                        <div class="kc-elm item item_1 odd">
+                            <a class="kc-elm thumb" href="{{ route('post.detail', $post->slug) }}"
+                                title="{{ $post->title }}"><img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
+                            </a>
+                            <div class="col">
+                                <div class="kc-elm title"><a href="{{ route('post.detail', $post->slug) }}"
+                                        title="{{ $post->title }}">{{ $post->title }}</a></div>
+                                <div class="kc-elm desc">{{ $post->description }}&hellip;</div>
+                                <div class="more"><a href="{{ route('post.detail', $post->slug) }}"
+                                        title="{{ $post->title }}">Xem chi tiết</a></div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="kc-elm vnt_pagenavi">
+                    @if (!$posts->onFirstPage())
+                        <a class="page-numbers" href="{{ $posts->previousPageUrl() }}"><i class="fa fa-chevron-left"></i></a>
+                    @endif
+
+                    @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
+                        @if ($page == $posts->currentPage())
+                            <span aria-current="page" class="page-numbers current">{{ $page }}</span>
+                        @else
+                            <a class="page-numbers" href="{{ $url }}">{{ $page }}</a>
+                        @endif
+                    @endforeach
+
+                    @if ($posts->hasMorePages())
+                        <a class="next page-numbers" href="{{ $posts->nextPageUrl() }}"><i class="fa fa-chevron-right"></i></a>
+                    @endif
+                </div>
+
+
+            </div>
         </div>
-    </div>
+    </section>
 @endsection
+@push('css')
+    <style type="text/css">
+    .kc-elm.vnt_pagenavi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.kc-elm.vnt_pagenavi .page-numbers {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.kc-elm.vnt_pagenavi .page-numbers.current {
+    background-color: #007bff;
+    color: white;
+}
+
+.kc-elm.vnt_pagenavi .next, .kc-elm.vnt_pagenavi .prev {
+    font-size: 1.2em;
+}
+
+        @media only screen and (min-width: 1000px) and (max-width: 5000px) {
+            body.kc-css-system .kc-css-675907 {
+                width: 30%;
+            }
+
+            body.kc-css-system .kc-css-585439 {
+                width: 70%;
+            }
+        }
+
+        body.kc-css-system .kc-css-711401 {
+            background: linear-gradient(#f9f9f9, #ffffff, #f9f9f9);
+            padding-top: 25px;
+            padding-bottom: 50px;
+        }
+
+        body.kc-css-system .kc-css-711401>.kc-container {
+            display: block;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        body.kc-css-system .kc-css-675907 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 120px;
+        }
+
+        body.kc-css-system .kc-css-389257 .type {
+            width: 100%;
+            color: #0f5291;
+            font-size: 22px;
+            line-height: 36px;
+            font-weight: 600;
+        }
+
+        body.kc-css-system .kc-css-389257 .sub {
+            width: 30px;
+            height: 3px;
+            background: #1ab6c1;
+        }
+
+        body.kc-css-system .kc-css-389257 {
+            display: flex;
+            flex-flow: wrap;
+        }
+
+        body.kc-css-system .kc-css-611337 .thumb {
+            width: 80px;
+            margin-right: 15px;
+        }
+
+        body.kc-css-system .kc-css-611337 .title {
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 600;
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-611337 .item {
+            display: flex;
+            border-bottom: 1px solid #dcdcdc;
+            ;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            flex-flow: wrap;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-611337 {
+            margin-top: 25px;
+        }
+
+        body.kc-css-system .kc-css-563013 .type {
+            color: #0f5291;
+            font-size: 36px;
+            line-height: 42px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        body.kc-css-system .kc-css-674790 .thumb {
+            width: 300px;
+        }
+
+        body.kc-css-system .kc-css-674790 .title {
+            font-size: 24px;
+            line-height: 30px;
+            font-weight: 600;
+        }
+
+        body.kc-css-system .kc-css-674790 .desc {
+            margin-top: 10px;
+        }
+
+        body.kc-css-system .kc-css-674790 .more {
+            width: 100%;
+            display: flex;
+            float: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        body.kc-css-system .kc-css-674790 .more a {
+            background: #1ab6c1;
+            border-radius: 5px 5px 5px 5px;
+            color: #ffffff;
+            line-height: 24px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        body.kc-css-system .kc-css-674790 .col {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            flex: 1;
+        }
+
+        body.kc-css-system .kc-css-674790 .item {
+            display: flex;
+            margin-top: 25px;
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+            ;
+            flex-flow: wrap;
+            align-items: center;
+        }
+
+        body.kc-css-system .kc-css-674790 .item:hover {
+            box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.55);
+            ;
+        }
+
+        @media only screen and (max-width: 767px) {
+            body.kc-css-system .kc-css-711401 {
+                display: flex;
+                flex-flow: wrap;
+            }
+
+            body.kc-css-system .kc-css-711401>.kc-container {
+                display: flex;
+                flex-flow: wrap;
+            }
+
+            body.kc-css-system .kc-css-675907 {
+                margin-top: 30px;
+                order: 99;
+            }
+        }
+
+        @media only screen and (max-width: 479px) {
+            body.kc-css-system .kc-css-674790 .thumb {
+                width: 100%;
+            }
+
+            body.kc-css-system .kc-css-674790 .thumb img {
+                width: 100%;
+                display: block;
+            }
+
+            body.kc-css-system .kc-css-674790 .col {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    </style>
+@endpush

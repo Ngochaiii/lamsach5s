@@ -18,26 +18,16 @@
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.952857531147!2d105.81353838690606!3d21.034572208619515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab12d0e7b633%3A0xe5e58a6de38fed18!2zMiBOZ8O1IDE5IC0gTGnhu4V1IEdpYWksIExp4buFdSBHaWFpLCBCYSDEkMOsbmgsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1633955485260!5m2!1sen!2s"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
-
             <div class="kc-elm kc-css-531776 vnt_editor">
-
-
                 <div class="wpcf7 no-js" id="wpcf7-f220-p60-o1" lang="vi" dir="ltr">
                     <div class="screen-reader-response">
                         <p role="status" aria-live="polite" aria-atomic="true"></p>
                         <ul></ul>
                     </div>
-                    <form action="https://lamsach5s.vn/lien-he/#wpcf7-f220-p60-o1" method="post" class="wpcf7-form init"
-                        aria-label="Form liên hệ" novalidate="novalidate" data-status="init">
-                        <div style="display: none;">
-                            <input type="hidden" name="_wpcf7" value="220" />
-                            <input type="hidden" name="_wpcf7_version" value="5.9.8" />
-                            <input type="hidden" name="_wpcf7_locale" value="vi" />
-                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f220-p60-o1" />
-                            <input type="hidden" name="_wpcf7_container_post" value="60" />
-                            <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                        </div>
+                    <form action="{{ route('contact.store') }}" method="POST" class="wpcf7-form init" aria-label="Form liên hệ"
+                        novalidate="novalidate" data-status="init">
+                        @csrf
+                        <input type="hidden" name="form_type" value="lien_he">
                         <div class="kc-elm cf7_lienhe">
                             <label><span class="label">Họ tên*</span><span class="wpcf7-form-control-wrap"
                                     data-name="ho-ten"><input size="40" maxlength="400"
@@ -67,67 +57,61 @@
                         <div class="wpcf7-response-output" aria-hidden="true"></div>
                     </form>
                 </div>
-
             </div>
-
-
-
-
         </div>
-
     </section>
 @endsection
 @push('css')
-<style type="text/css" id="kc-css-render">
-    body.kc-css-system .kc-css-837295 {
-        background: linear-gradient(#f9f9f9, #ffffff, #f9f9f9);
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-
-    body.kc-css-system .kc-css-837295>.kc-container {
-        display: flex;
-        flex-flow: wrap;
-        justify-content: center;
-    }
-
-    body.kc-css-system .kc-css-750790 .type {
-        width: 100%;
-        color: #0f5291;
-        font-size: 36px;
-        line-height: 42px;
-        font-weight: 600;
-        text-align: center;
-    }
-
-    body.kc-css-system .kc-css-750790 .sub {
-        width: 80px;
-        height: 3px;
-        background: #1ab6c1;
-        margin-top: 10px;
-    }
-
-    body.kc-css-system .kc-css-750790 {
-        display: flex;
-        flex-flow: wrap;
-        justify-content: center;
-    }
-
-    body.kc-css-system .kc-css-217548 {
-        height: 300px;
-        margin-top: 20px;
-    }
-
-    body.kc-css-system .kc-css-531776 {
-        max-width: 600px;
-        margin-top: 20px;
-    }
-
-    @media only screen and (max-width:767px) {
-        body.kc-css-system .kc-css-750790 .type {
-            font-size: 24px;
-            line-height: 30px;
+    <style type="text/css" id="kc-css-render">
+        body.kc-css-system .kc-css-837295 {
+            background: linear-gradient(#f9f9f9, #ffffff, #f9f9f9);
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
-    }
-</style>
+
+        body.kc-css-system .kc-css-837295>.kc-container {
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+        }
+
+        body.kc-css-system .kc-css-750790 .type {
+            width: 100%;
+            color: #0f5291;
+            font-size: 36px;
+            line-height: 42px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        body.kc-css-system .kc-css-750790 .sub {
+            width: 80px;
+            height: 3px;
+            background: #1ab6c1;
+            margin-top: 10px;
+        }
+
+        body.kc-css-system .kc-css-750790 {
+            display: flex;
+            flex-flow: wrap;
+            justify-content: center;
+        }
+
+        body.kc-css-system .kc-css-217548 {
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        body.kc-css-system .kc-css-531776 {
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        @media only screen and (max-width:767px) {
+            body.kc-css-system .kc-css-750790 .type {
+                font-size: 24px;
+                line-height: 30px;
+            }
+        }
+    </style>
 @endpush

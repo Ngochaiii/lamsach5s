@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthenticationController;
+use App\Http\Controllers\Backend\CustomerRequestController as BackendCustomerRequestController;
+use App\Http\Controllers\FrontEnd\CustomerRequestController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\TypeController;
 use App\Http\Controllers\FrontEnd\ContactController;
+use App\Http\Controllers\Frontend\ContactRequestController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\FrontEnd\Postcontroller as FrontEndPostcontroller;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
-
+Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
 
 
 // Authentication routes
@@ -43,7 +46,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // type
     Route::get('/type', [TypeController::class, 'index'])->name('admin.type');
     Route::post('/type-add', [TypeController::class, 'store'])->name('admin.type.add');
+
+    //contact
+    Route::get('/contact', [BackendCustomerRequestController::class, 'index'])->name('admin.custommer');
+
 });
+
+
 
 Route::get('/{slug}', [FrontEndPostcontroller::class, 'index'])->name('post.detail');
 Route::get('/category/{type}', [FrontEndPostcontroller::class, 'list'])->name('category.list');
