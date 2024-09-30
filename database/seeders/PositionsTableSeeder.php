@@ -25,5 +25,11 @@ class PositionsTableSeeder extends Seeder
             'name' => 'Blog làm sạch',
             'position' => Position::TYPE_CLEANING_BLOG
         ]);
+
+        Position::create([
+            'id' => 3,
+            'name' => 'Tuyển dụng',
+            'position' => Position::TYPE_RECRUITMENT
+        ]);
     }
 }

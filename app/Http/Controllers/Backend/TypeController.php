@@ -24,7 +24,7 @@ class TypeController extends Controller
         ]);
 
         // Create a unique 'type' (UUID or a random string)
-        $type = Str::uuid(); // This generates a unique UUID
+        $type = Str::slug($request->input('name'), '-'); // This generates a unique UUID
         // Alternatively, you could use a random string:
         // $type = Str::random(10); // Generates a random 10-character string
 

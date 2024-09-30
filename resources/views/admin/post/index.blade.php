@@ -30,6 +30,7 @@
                                 <option value="" disabled selected>Chọn loại bài viết</option>
                                 <option value="service">Dịch vụ</option>
                                 <option value="blog">Blog làm sạch</option>
+                                <option value="recruitment">Tuyển dụng</option>
                             </select>
                         </div>
                     </div>

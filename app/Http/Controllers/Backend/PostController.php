@@ -22,15 +22,16 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
+
         // Validate form input
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'post_type' => 'required|in:service,blog',
-            'category' => 'required_if:post_type,blog|exists:types,id',
+            'post_type' => 'required|in:service,blog,recruitment',
+            'category' => 'required_if:post_type,blog,|exists:types,id',
             'content' => 'required',
-
         ]);
+
 
         // Handle file upload
         $imagePath = null;
@@ -49,16 +50,38 @@ class PostController extends Controller
         $post->description = $request->input('description');
         $post->content = $request->input('content');
         $post->type = $request->input('post_type');
-
         // Xử lý loại bài viết và danh mục
         if ($request->input('post_type') === 'service') {
             $post->type_id = null; // Hoặc ID mặc định cho dịch vụ nếu có
+        } elseif ($request->input('post_type') === 'recruitment') {
+            $post->type_id = null; // Hoặc ID mặc định cho tuyển dụng nếu có
         } else {
             $post->type_id = $request->input('category');
         }
 
+
         $post->save();
 
         return redirect()->route('admin.post')->with('success', 'Bài viết đã được tạo thành công!');
+    }
+    public function search(Request $request)
+    {
+        $servicesPosts = Post::where('type', 'service')->get();
+        $categories = Types::where('position_id', 2)->get();
+        $recruitmentPosts = Post::where('type', 'recruitment')->get();
+        $keyword = $request->input('s');
+
+        // Tìm kiếm theo từ khóa trong cột 'title'
+        $results = Post::where('title', 'like', '%' . $keyword . '%')->get();
+        $compacts =[
+            'posts'=> Post::all(),
+            'servicesPosts' => $servicesPosts,
+            'categories' => $categories,
+            'recruitmentPosts'=>$recruitmentPosts,
+            'results'=>$results,
+            'keyword'=>$keyword
+
+        ];
+        return view('web.recruitment.search', $compacts);
     }
 }

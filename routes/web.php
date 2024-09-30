@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/lien-he', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactRequestController::class, 'store'])->name('contact.store');
+Route::get('/tuyen-dung', [FrontEndPostcontroller::class, 'recruitmentPosts'])->name('recruitment.list');
+Route::get('/search', [PostController::class, 'search'])->name('search');
+
 
 
 // Authentication routes
@@ -34,9 +37,8 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 
-
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
 
     //post
     Route::get('/post', [PostController::class, 'index'])->name('admin.post');
@@ -55,4 +57,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 Route::get('/{slug}', [FrontEndPostcontroller::class, 'index'])->name('post.detail');
-Route::get('/category/{type}', [FrontEndPostcontroller::class, 'list'])->name('category.list');
+Route::get('/Blog-lam-sach/{type}', [FrontEndPostcontroller::class, 'list'])->name('category.list');

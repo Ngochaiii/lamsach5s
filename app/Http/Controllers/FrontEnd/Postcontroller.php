@@ -55,4 +55,17 @@ class Postcontroller extends Controller
 
         return view('web.post.list', $compact);
     }
+    public function recruitmentPosts(){
+        $recruitmentPosts = Post::where('type', 'recruitment')->get();
+        $servicesPosts = Post::where('type', 'service')->get();
+        $categories = Types::where('position_id', 2)->get();
+        $compact =[
+            'posts'=> Post::all(),
+            'servicesPosts' => $servicesPosts,
+            'categories' => $categories,
+            'recruitmentPosts' =>$recruitmentPosts
+        ];
+        return view('web.recruitment.list',$compact);
+    }
+
 }

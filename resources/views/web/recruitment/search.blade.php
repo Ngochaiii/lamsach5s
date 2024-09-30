@@ -1,74 +1,47 @@
 @extends('layout.default')
 @section('content')
-    <section id="main_archive" class="kc-elm kc-css-711401 kc_row vnt_section hide_col">
-
-        <div class="kc-row-container kc-container vnt_col">
-
-            <div class="kc-elm kc-css-675907 kc_col-sm-4 kc_column kc_col-sm-4">
-
-                <div class="kc-elm kc-css-389257 vnt_title">
-
-                    <h3 class="type">Bài viết xem nhiều</h3>
-                    <span class="sub"></span>
-
-                </div>
-                <div class="kc-elm kc-css-611337 vnt_archive">
-                </div>
-
-
-            </div>
-            <div class="kc-elm kc-css-585439 kc_col-sm-8 kc_column kc_col-sm-8">
-
-                <div class="kc-elm kc-css-563013 vnt_title">
-
-                    <h1 class="type">{{ $currentCategory->name }}</h1>
-
-
-                </div>
-                <div class="kc-elm kc-css-674790 vnt_archive">
-                    @foreach ($posts as $post)
-                        <div class="kc-elm item item_1 odd">
-                            <a class="kc-elm thumb" href="{{ route('post.detail', $post->slug) }}"
-                                title="{{ $post->title }}"><img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
-                            </a>
-                            <div class="col">
-                                <div class="kc-elm title"><a href="{{ route('post.detail', $post->slug) }}"
-                                        title="{{ $post->title }}">{{ $post->title }}</a></div>
-                                <div class="kc-elm desc">{{ $post->description }}&hellip;</div>
-                                <div class="more"><a href="{{ route('post.detail', $post->slug) }}"
-                                        title="{{ $post->title }}">Xem chi tiết</a></div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="kc-elm vnt_pagenavi">
-                    @if (!$posts->onFirstPage())
-                        <a class="page-numbers" href="{{ $posts->previousPageUrl() }}"><i
-                                class="fa fa-chevron-left"></i></a>
-                    @endif
-
-                    @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
-                        @if ($page == $posts->currentPage())
-                            <span aria-current="page" class="page-numbers current">{{ $page }}</span>
-                        @else
-                            <a class="page-numbers" href="{{ $url }}">{{ $page }}</a>
-                        @endif
-                    @endforeach
-
-                    @if ($posts->hasMorePages())
-                        <a class="next page-numbers" href="{{ $posts->nextPageUrl() }}"><i
-                                class="fa fa-chevron-right"></i></a>
-                    @endif
-                </div>
-
-
-            </div>
+<div class="content-wrapper">
+    <div class="kc-elm kc-css-585439 kc_col-sm-8 kc_column kc_col-sm-8">
+        <div class="kc-elm kc-css-563013 vnt_title">
+            <h1 class="type">Kết quả tìm kiếm :{{ $keyword }}</h1>
         </div>
-    </section>
+        <div class="kc-elm kc-css-674790 vnt_archive">
+            @if($results->isEmpty())
+                <p>Không tìm thấy kết quả phù hợp.</p>
+            @else
+                @foreach ($results as $post)
+                    <div class="kc-elm item item_1 odd">
+                        <a class="kc-elm thumb" href="{{ route('post.detail', $post->slug) }}"
+                            title="{{ $post->title }}"><img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
+                        </a>
+                        <div class="col">
+                            <div class="kc-elm title"><a href="{{ route('post.detail', $post->slug) }}"
+                                    title="{{ $post->title }}">{{ $post->title }}</a></div>
+                            <div class="kc-elm desc">{{ $post->description }}&hellip;</div>
+                            <div class="more"><a href="{{ route('post.detail', $post->slug) }}"
+                                    title="{{ $post->title }}">Xem chi tiết</a></div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</div>
 @endsection
 @push('css')
     <style type="text/css">
+    .content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px; /* Tạo khoảng trống xung quanh */
+    box-sizing: border-box;
+}
+.kc-col-sm-8 {
+    max-width: 800px; /* Điều chỉnh độ rộng tối đa */
+    width: 100%;
+}
         .kc-elm.vnt_pagenavi {
             display: flex;
             justify-content: center;
@@ -261,3 +234,4 @@
         }
     </style>
 @endpush
+

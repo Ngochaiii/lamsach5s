@@ -12,12 +12,15 @@ class HomeController extends Controller
     public function index(){
         $servicesPosts = Post::where('type', 'service')->get();
         $categories = Types::where('position_id', 2)->get();
+        $recruitmentPosts = Post::where('type', 'recruitment')->get();
         $compacts =[
             'posts'=> Post::all(),
             'servicesPosts' => $servicesPosts,
-            'categories' => $categories
+            'categories' => $categories,
+            'recruitmentPosts'=>$recruitmentPosts,
 
         ];
+
         return view('web.index',$compacts);
     }
 }

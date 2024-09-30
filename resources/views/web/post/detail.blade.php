@@ -5,6 +5,10 @@
         <div class="kc-row-container kc-container vnt_col">
 
             <div class="kc-elm kc-css-218837 kc_col-sm-8 kc_column kc_col-sm-8">
+                <div class="kc-elm kc-css-599796 vnt_editor">
+
+                    <span><span><a href="{{route('homepage')}}">Trang chủ</a></span> » <span></a></span> » <span><a href="{{route('post.detail',$datas->slug)}}">{{$datas->title}}</a></span></span>
+                </div>
                 {!! $datas->content !!}
             </div>
             <div class="kc-elm kc-css-311156 kc_col-sm-4 kc_column kc_col-sm-4">

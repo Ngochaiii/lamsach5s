@@ -17,15 +17,12 @@
 
         <div class="kc-elm kc-css-301706 vnt_search">
 
-            <form role="search" method="get" class="woocommerce-product-search search_form"
-                action="https://lamsach5s.vn/">
-
+            <form role="search" method="get" class="woocommerce-product-search search_form" action="{{ route('search') }}">
                 <input type="search" id="woocommerce-product-search-field-0" class="search-field search_field"
-                    placeholder="Tìm kiếm" value="" name="s" />
-
+                       placeholder="Tìm kiếm" value="" name="s" />
                 <button type="submit" class="search_submit"><i class="fa-search"></i></button>
-
             </form>
+
 
         </div>
 
