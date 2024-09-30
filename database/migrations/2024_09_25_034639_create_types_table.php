@@ -12,10 +12,9 @@ class CreateTypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type')->unique();
-            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
         });
     }
 
