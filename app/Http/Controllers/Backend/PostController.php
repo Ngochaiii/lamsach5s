@@ -70,16 +70,26 @@ class PostController extends Controller
         $categories = Types::where('position_id', 2)->get();
         $recruitmentPosts = Post::where('type', 'recruitment')->get();
         $keyword = $request->input('s');
+        // Kiểm tra nếu từ khóa rỗng
+        if (empty($keyword)) {
+            return redirect()->back()->with('error', 'Vui lòng nhập từ khóa tìm kiếm.');
+        }
+        // Xử lý và giới hạn độ dài từ khóa
+        $keyword = substr($keyword, 0, 100); // Giới hạn độ dài từ khóa là 100 ký tự
 
+        // Kiểm tra nếu từ khóa không hợp lệ
+        if (strlen($keyword) < 3) {
+            return redirect()->back()->with('error', 'Từ khóa phải có ít nhất 3 ký tự.');
+        }
         // Tìm kiếm theo từ khóa trong cột 'title'
         $results = Post::where('title', 'like', '%' . $keyword . '%')->get();
-        $compacts =[
-            'posts'=> Post::all(),
+        $compacts = [
+            'posts' => Post::all(),
             'servicesPosts' => $servicesPosts,
             'categories' => $categories,
-            'recruitmentPosts'=>$recruitmentPosts,
-            'results'=>$results,
-            'keyword'=>$keyword
+            'recruitmentPosts' => $recruitmentPosts,
+            'results' => $results,
+            'keyword' => $keyword
 
         ];
         return view('web.recruitment.search', $compacts);

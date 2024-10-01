@@ -19,7 +19,7 @@
 
             <form role="search" method="get" class="woocommerce-product-search search_form" action="{{ route('search') }}">
                 <input type="search" id="woocommerce-product-search-field-0" class="search-field search_field"
-                       placeholder="Tìm kiếm" value="" name="s" />
+                       placeholder="Tìm kiếm" value="" name="s" maxlength="100"/>
                 <button type="submit" class="search_submit"><i class="fa-search"></i></button>
             </form>
 
