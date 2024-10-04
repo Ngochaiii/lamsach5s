@@ -6,7 +6,11 @@
 
             <div class="kc-elm kc-css-840581 vnt_image logo">
                 <div class="thumb">
+                    @if ($config->logo)
+                        <img src="{{ asset($config->logo) }}" alt="{{ $config->company_name ?? 'Company Logo' }}">
+                    @else
                     <img src="{{ asset('web/wp-content/uploads/Logo-h100.png') }}" alt="Logo Làm Sạch 5S">
+                    @endif
                 </div>
                 <a href="{{ route('homepage') }}" title="Trang chủ" class="link"><span class="link_title">Trang
                         chủ</span></a>
@@ -53,18 +57,10 @@
                     </li>
                     <li id="menu-item-1939"
                         class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1939"><a
-                            class="menu_link" href="{{route('recruitment.list')}}">TUYỂN DỤNG</a></li>
+                            class="menu_link" href="{{ route('recruitment.list') }}">TUYỂN DỤNG</a></li>
                 </ul>
             </div>
 
-            <div class="kc-elm kc-css-124168 vnt_title">
-
-                <i class="icon fa-user-clock"></i>
-                <div class="type">Tài khoản</div>
-
-                <a href="" class="link " title="Tài khoản">Tài khoản</a>
-
-            </div>
 
             <div class="kc-elm kc-css-398467 vnt_title">
 

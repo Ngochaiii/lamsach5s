@@ -5,12 +5,14 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Types;
+use App\Models\SiteConfig;
 use Illuminate\Http\Request;
 
 class Postcontroller extends Controller
 {
     public function index(string $slug)
     {
+         $config = SiteConfig::getConfig();
         $datas = Post::where('slug', $slug)->first();
         $servicesPosts = Post::where('type', 'service')->get();
         $categories = Types::where('position_id', 2)->get();
@@ -23,13 +25,15 @@ class Postcontroller extends Controller
             'posts' => Post::all(),
             'servicesPosts' => $servicesPosts,
             'categories' => $categories,
-            'relatedPosts' => $relatedPosts
+            'relatedPosts' => $relatedPosts,
+            'config' => $config
 
         ];
         return view('web.post.detail', $compact);
     }
     public function list(string $type)
     {
+         $config = SiteConfig::getConfig();
         // Lấy danh mục hiện tại
         $currentCategory = Types::where('type', $type)->firstOrFail();
 
@@ -48,7 +52,8 @@ class Postcontroller extends Controller
             'currentCategory' => $currentCategory,
             'categories' => $categories,
             'posts' => $posts,
-            'servicesPosts' => $servicesPosts
+            'servicesPosts' => $servicesPosts,
+            'config' => $config
         ];
 
         // dd($compact); // Để debug, bạn có thể giữ dòng này
@@ -56,16 +61,54 @@ class Postcontroller extends Controller
         return view('web.post.list', $compact);
     }
     public function recruitmentPosts(){
+         $config = SiteConfig::getConfig();
         $recruitmentPosts = Post::where('type', 'recruitment')->get();
         $servicesPosts = Post::where('type', 'service')->get();
+        $commitment = Post::where('type', 'commitment')->get();
+        $introduce = Post::where('type', 'introduce')->get();
         $categories = Types::where('position_id', 2)->get();
         $compact =[
             'posts'=> Post::all(),
             'servicesPosts' => $servicesPosts,
             'categories' => $categories,
-            'recruitmentPosts' =>$recruitmentPosts
+            'recruitmentPosts' =>$recruitmentPosts,
+            'commitment' =>$commitment,
+            'introduce' => $introduce,
+            'config' => $config
+
         ];
         return view('web.recruitment.list',$compact);
+    }
+    public function introduce(){
+         $config = SiteConfig::getConfig();
+        $introduce = Post::where('type', 'introduce')->latest()->firstOrFail();
+        $recruitmentPosts = Post::where('type', 'recruitment')->get();
+        $servicesPosts = Post::where('type', 'service')->get();
+        $categories = Types::where('position_id', 2)->get();
+        $compacts =[
+            'introduce' => $introduce,
+            'servicesPosts' => $servicesPosts,
+            'categories' => $categories,
+            'recruitmentPosts' =>$recruitmentPosts,
+            'config' => $config
+        ];
+        return view('web.post.introduce',$compacts);
+
+    }
+    public function commitment(){
+         $config = SiteConfig::getConfig();
+        $commitment = Post::where('type', 'commitment')->latest()->firstOrFail();
+        $recruitmentPosts = Post::where('type', 'recruitment')->get();
+        $servicesPosts = Post::where('type', 'service')->get();
+        $categories = Types::where('position_id', 2)->get();
+        $compacts =[
+            'commitment' => $commitment,
+            'servicesPosts' => $servicesPosts,
+            'categories' => $categories,
+            'recruitmentPosts' =>$recruitmentPosts,
+            'config' => $config
+        ];
+        return view('web.post.commitment',$compacts);
     }
 
 }

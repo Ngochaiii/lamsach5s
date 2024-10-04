@@ -1,6 +1,28 @@
-<div class="kc-elm kc-css-260819 kc_col-sm-12 vnt_slick "
-        data-slick='{"slidesToShow": 1,  "slidesToScroll": 1, "centerMode": false, "variableWidth": false, "dots": true, "arrows": true, "autoplay": false,   "infinite": true, "adaptiveHeight": false , "fade": true,  "rows": 0, "responsive":[{"breakpoint": 1024, "settings":{"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 767, "settings":{"slidesToShow": 1, "slidesToScroll": 1, "adaptiveHeight": false, "fade": false}}, {"breakpoint": 480, "settings":{"slidesToShow": 1, "slidesToScroll": 1, "adaptiveHeight": true}}]}'>
+@php
+$banners = App\Models\Banner::where('is_active', true)->orderBy('order')->get();
+@endphp
 
+<div class="kc-elm kc-css-260819 kc_col-sm-12 vnt_slick"
+     data-slick='{"slidesToShow": 1, "slidesToScroll": 1, "centerMode": false, "variableWidth": false, "dots": true, "arrows": true, "autoplay": false, "infinite": true, "adaptiveHeight": false, "fade": true, "rows": 0, "responsive":[{"breakpoint": 1024, "settings":{"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 767, "settings":{"slidesToShow": 1, "slidesToScroll": 1, "adaptiveHeight": false, "fade": false}}, {"breakpoint": 480, "settings":{"slidesToShow": 1, "slidesToScroll": 1, "adaptiveHeight": true}}]}'>
+
+    @if($banners->isNotEmpty())
+        @foreach($banners as $banner)
+            @php
+                $images = json_decode($banner->images);
+            @endphp
+            @foreach($images as $image)
+                <div class="kc-elm kc-css-18349 slick_item">
+                    <div class="item">
+                        <div class="kc-elm kc-css-820106 vnt_image">
+                            <div class="thumb">
+                                <img decoding="async" src="{{ asset('storage/' . $image) }}" alt="{{ $banner->title }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endforeach
+    @else
         <div class="kc-elm kc-css-18349 slick_item">
             <div class="item">
                 <div class="kc-elm kc-css-820106 vnt_image">
@@ -21,4 +43,49 @@
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+</div>
+
+<script>
+$(document).ready(function(){
+    $('.vnt_slick').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: false,
+        variableWidth: false,
+        dots: true,
+        arrows: true,
+        autoplay: false,
+        infinite: true,
+        adaptiveHeight: false,
+        fade: true,
+        rows: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    adaptiveHeight: false,
+                    fade: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    adaptiveHeight: true
+                }
+            }
+        ]
+    });
+});
+</script>

@@ -9,11 +9,15 @@ class Position extends Model
     const TYPE_SERVICE = 1;
     const TYPE_CLEANING_BLOG = 2;
     const TYPE_RECRUITMENT =3;
+    const TYPE_INTRODUCE = 4;
+    const TYPE_COMMITMENT =5;
 
     const TYPES = [
         self::TYPE_SERVICE => 'Dịch vụ',
         self::TYPE_CLEANING_BLOG => 'Blog làm sạch',
         self::TYPE_RECRUITMENT => 'Tuyển dụng',
+        self::TYPE_INTRODUCE => 'Giới thiệu',
+        self::TYPE_COMMITMENT => 'Cam kết'
     ];
 
     protected $fillable = [
@@ -41,6 +45,15 @@ class Position extends Model
         return $this->position == self::TYPE_RECRUITMENT;
     }
 
+    public function isCommitment()
+    {
+        return $this->position == self::TYPE_COMMITMENT;
+    }
+
+    public function isIntroduce()
+    {
+        return $this->position == self::TYPE_INTRODUCE;
+    }
     public function getTypeName()
     {
         return self::TYPES[$this->position] ?? 'Không xác định';

@@ -5,12 +5,12 @@
         <div class="kc-elm kc-css-986320 vnt_list">
 
             <div class="item item_1 current">
-                <div class="title">Giới thiệu</div><a href="gioi-thieu/index.html" title="Giới thiệu"
+                <div class="title">Giới thiệu</div><a href="{{route('introduce')}}" title="Giới thiệu"
                     class="link">Giới thiệu</a>
             </div>
 
             <div class="item item_2 current">
-                <div class="title">Cam kết dịch vụ 5S</div><a href="cam-ket-dich-vu-5s/index.html"
+                <div class="title">Cam kết dịch vụ 5S</div><a href="{{route('commitment')}}"
                     title="Cam kết dịch vụ 5S" class="link">Cam kết dịch vụ 5S</a>
             </div>
         </div>
@@ -22,11 +22,7 @@
                        placeholder="Tìm kiếm" value="" name="s" maxlength="100"/>
                 <button type="submit" class="search_submit"><i class="fa-search"></i></button>
             </form>
-
-
         </div>
-
-
     </div>
 
 </section>

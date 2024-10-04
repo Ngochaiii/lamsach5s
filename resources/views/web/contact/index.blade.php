@@ -14,9 +14,14 @@
 
             <div class="kc-elm kc-css-217548 vnt_editor map_code">
 
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.952857531147!2d105.81353838690606!3d21.034572208619515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab12d0e7b633%3A0xe5e58a6de38fed18!2zMiBOZ8O1IDE5IC0gTGnhu4V1IEdpYWksIExp4buFdSBHaWFpLCBCYSDEkMOsbmgsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1633955485260!5m2!1sen!2s"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                @if ($config->google_map_iframe)
+                    {!! $config->google_map_iframe !!}
+                @else
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.952857531147!2d105.81353838690606!3d21.034572208619515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab12d0e7b633%3A0xe5e58a6de38fed18!2zMiBOZ8O1IDE5IC0gTGnhu4V1IEdpYWksIExp4buFdSBHaWFpLCBCYSDEkMOsbmgsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1633955485260!5m2!1sen!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                @endif
             </div>
             <div class="kc-elm kc-css-531776 vnt_editor">
                 <div class="wpcf7 no-js" id="wpcf7-f220-p60-o1" lang="vi" dir="ltr">
@@ -24,8 +29,8 @@
                         <p role="status" aria-live="polite" aria-atomic="true"></p>
                         <ul></ul>
                     </div>
-                    <form action="{{ route('contact.store') }}" method="POST" class="wpcf7-form init" aria-label="Form liên hệ"
-                        novalidate="novalidate" data-status="init">
+                    <form action="{{ route('contact.store') }}" method="POST" class="wpcf7-form init"
+                        aria-label="Form liên hệ" novalidate="novalidate" data-status="init">
                         @csrf
                         <input type="hidden" name="form_type" value="lien_he">
                         <div class="kc-elm cf7_lienhe">

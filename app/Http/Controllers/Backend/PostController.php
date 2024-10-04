@@ -27,7 +27,7 @@ class PostController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'post_type' => 'required|in:service,blog,recruitment',
+            'post_type' => 'required|in:service,blog,recruitment,introduce,commitment',
             'category' => 'required_if:post_type,blog,|exists:types,id',
             'content' => 'required',
         ]);
@@ -51,12 +51,22 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->type = $request->input('post_type');
         // Xử lý loại bài viết và danh mục
-        if ($request->input('post_type') === 'service') {
-            $post->type_id = null; // Hoặc ID mặc định cho dịch vụ nếu có
-        } elseif ($request->input('post_type') === 'recruitment') {
-            $post->type_id = null; // Hoặc ID mặc định cho tuyển dụng nếu có
-        } else {
-            $post->type_id = $request->input('category');
+        switch ($request->input('post_type')) {
+            case 'service':
+                $post->type_id = null; // Hoặc ID mặc định cho dịch vụ nếu có
+                break;
+            case 'recruitment':
+                $post->type_id = null; // Hoặc ID mặc định cho tuyển dụng nếu có
+                break;
+            case 'introduce':
+                $post->type_id = null; // Hoặc ID mặc định cho giới thiệu nếu có
+                break;
+            case 'commitment':
+                $post->type_id = null; // Hoặc ID mặc định cho cam kết nếu có
+                break;
+            default:
+                $post->type_id = $request->input('category');
+                break;
         }
 
 

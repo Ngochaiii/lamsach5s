@@ -31,6 +31,8 @@
                                 <option value="service">Dịch vụ</option>
                                 <option value="blog">Blog làm sạch</option>
                                 <option value="recruitment">Tuyển dụng</option>
+                                <option value="introduce">Giới thiệu</option>
+                                <option value="commitment">Cam kết</option>
                             </select>
                         </div>
                     </div>

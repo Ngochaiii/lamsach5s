@@ -13,28 +13,36 @@
 
             </div>
             <div class="kc-elm kc-css-329000 vnt_list">
-
                 <div class="item item_1">
                     <i class="icon fa-map-marker-alt"></i>
-                    <div class="title">Nhà 2B Ngõ 19, Liễu Giai, Quận Ba Đình, Hà Nội</div>
+                    <div class="title">{{ $config->address }}</div>
                 </div>
 
                 <div class="item item_2">
                     <i class="icon fa-phone-office"></i>
-                    <div class="title">Điện thoại: 024.626.33033</div><a href="tel:02462633033"
-                        title="Điện thoại: 024.626.33033" target=_blank class="link">Điện thoại: 024.626.33033</a>
+                    <div class="title">Điện thoại: {{ $config->phone }}</div>
+                    <a href="tel:{{ preg_replace('/[^0-9]/', '', $config->phone) }}"
+                       title="Điện thoại: {{ $config->phone }}" target="_blank" class="link">
+                        Điện thoại: {{ $config->phone }}
+                    </a>
                 </div>
 
                 <div class="item item_3">
                     <i class="icon fa-phone-alt"></i>
-                    <div class="title">Hotline: 096.986.9884</div><a href="tel:0969869884"
-                        title="Hotline: 096.986.9884" target=_blank class="link">Hotline: 096.986.9884</a>
+                    <div class="title">Hotline: {{ $config->hotline }}</div>
+                    <a href="tel:{{ preg_replace('/[^0-9]/', '', $config->hotline) }}"
+                       title="Hotline: {{ $config->hotline }}" target="_blank" class="link">
+                        Hotline: {{ $config->hotline }}
+                    </a>
                 </div>
 
                 <div class="item item_4">
                     <i class="icon fa-envelope"></i>
-                    <div class="title">admin@lamsach5s.vn</div><a href="mailto:admin@lamsach5s.vn"
-                        title="Email đến Dịch vụ 5S" target=_blank class="link">Email đến Dịch vụ 5S</a>
+                    <div class="title">{{ $config->email }}</div>
+                    <a href="mailto:{{ $config->email }}"
+                       title="Email đến {{ $config->company_name }}" target="_blank" class="link">
+                        Email đến {{ $config->company_name }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -166,19 +174,16 @@
 
 
         <div class="kc-elm kc-css-490628 vnt_title">
-
-            <div class="thumb"><img class="img_1" src="{{asset('web/wp-content/uploads/hotline-nhay.gif')}}" alt="Điện thoại GIF">
-            </div><a href="tel:0969869884" class="link " title="Điện thoại" target=_blank>Điện thoại</a>
-
+            <div class="thumb">
+                <img class="img_1" src="{{ asset('web/wp-content/uploads/hotline-nhay.gif') }}" alt="Điện thoại GIF">
+            </div>
+            <a href="tel:{{ $config->phone }}" class="link " title="Điện thoại" target="_blank">Điện thoại</a>
         </div>
-
         <div class="kc-elm kc-css-603447 vnt_title ring_phone">
-
             <div class="ring_boder"></div>
             <i class="icon fa-phone-alt"></i>
-            <div class="type">0969869884</div>
-            <a href="tel:0969869884" class="link " title="Điện thoại" target=_blank>Điện thoại</a>
-
+            <div class="type">{{ $config->phone }}</div>
+            <a href="tel:{{ $config->phone }}" class="link " title="Điện thoại" target="_blank">Điện thoại</a>
         </div>
 
 

@@ -31,5 +31,17 @@ class PositionsTableSeeder extends Seeder
             'name' => 'Tuyển dụng',
             'position' => Position::TYPE_RECRUITMENT
         ]);
+
+        Position::create([
+            'id' => 4,
+            'name' => 'Cam kết',
+            'position' => Position::TYPE_COMMITMENT
+        ]);
+
+        Position::create([
+            'id' => 5,
+            'name' => 'Giới thiệu',
+            'position' => Position::TYPE_INTRODUCE
+        ]);
     }
 }
