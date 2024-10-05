@@ -104,4 +104,13 @@ class PostController extends Controller
         ];
         return view('web.recruitment.search', $compacts);
     }
+    public function listpost(){
+        $posts = Post::all();
+        return view('admin.post.list', compact('posts'));
+    }
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('posts.index')->with('success', 'Bài đăng đã được xóa thành công.');
+    }
 }

@@ -50,6 +50,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //post
     Route::get('/post', [PostController::class, 'index'])->name('admin.post');
     Route::post('/add', [PostController::class, 'store'])->name('admin.post.add');
+    Route::get('/list', [PostController::class, 'listpost'])->name('posts.index');
+    Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
     // type

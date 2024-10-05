@@ -23,7 +23,7 @@
             </a>
             <a href="{{ route('admin.type') }}" class="card text-center"><i class="fa-solid fa-user"></i> Danh mục
             </a>
-            <a href="{{ route('admin.type') }}" class="card text-center"><i class="fa-solid fa-user"></i> Danh mục
+            <a href="{{ route('posts.index') }}" class="card text-center"><i class="fa-solid fa-user"></i> Danh sách bài viết
             </a>
         </div>
         <div class="cardContainer">
