@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\SiteConfig;
 use App\Models\Types;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str; // Thêm dòng này
@@ -80,6 +81,7 @@ class PostController extends Controller
         $categories = Types::where('position_id', 2)->get();
         $recruitmentPosts = Post::where('type', 'recruitment')->get();
         $keyword = $request->input('s');
+        $config = SiteConfig::getConfig();
         // Kiểm tra nếu từ khóa rỗng
         if (empty($keyword)) {
             return redirect()->back()->with('error', 'Vui lòng nhập từ khóa tìm kiếm.');
@@ -99,7 +101,8 @@ class PostController extends Controller
             'categories' => $categories,
             'recruitmentPosts' => $recruitmentPosts,
             'results' => $results,
-            'keyword' => $keyword
+            'keyword' => $keyword,
+            'config' => $config
 
         ];
         return view('web.recruitment.search', $compacts);
